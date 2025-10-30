@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:local="using:TestDemo.Data"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TestDemo.InventoryPage"
+			 x:DataType="local:Inventory">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<DataGrid IsReadOnly="True" Grid.Row="0" AutoGenerateColumns="False" Name="DataGridInventory" ItemsSource="{Binding}">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Название" Binding="{Binding Name}"/>
+				<DataGridTextColumn Header="Категория" Binding="{Binding IdCategoryNavigation.Name}"/>
+				<DataGridTextColumn Header="Описание" Binding="{Binding Description}"/>
+				<DataGridTextColumn Header="Цена" Binding="{Binding BasePrice}"/>
+				<DataGridTextColumn Header="Состояние" Binding="{Binding IdSostoyanieNavigation.Name}"/>
+				<DataGridTextColumn Header="Статус" Binding="{Binding IdStatusNavigation.Name}"/>
+				<DataGridTextColumn Header="Склад" Binding="{Binding IdSkladNavigation.Name}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="2">
+			<Button Content="Добавить" Click="AddButton_Click"/>
+			<Button Content="Редактировать" Click="EditButton_Click_1"/>
+		</StackPanel>
+	</Grid>
+</UserControl>
